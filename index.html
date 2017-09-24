@@ -51,7 +51,7 @@
             e.preventDefault();
             console.log('submit');
             messagesData.msg.push($message.val());
-            localStorage.setItem('message-chat-node' + date.getDate() + "" + date.getMonth(), JSON.stringify(messagesData));
+            //localStorage.setItem('message-chat-node' + date.getDate() + "" + date.getMonth(), JSON.stringify(messagesData));
             socket.emit('send message', $message.val());
             $message.val('');
         });
