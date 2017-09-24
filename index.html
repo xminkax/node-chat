@@ -36,13 +36,21 @@
 </div>
 <script>
     $(function(){
+        var messagesData = JSON.parse(localStorage.getItem('message-chat-node')) || {msg: []};
+        var $chat = $('#chat');
+        for(var i = 0; i < messagesData.msg.length; i++) {
+            $chat.append('<div class="well">'+ messagesData.msg[i] + '</div>')
+        }
+        console.log(messagesData);
         var socket = io.connect();
         var $messageForm = $('#messageForm');
         var $message = $('#message');
-        var $chat = $('#chat');
+
         $messageForm.submit(function(e){
             e.preventDefault();
             console.log('submit');
+            messagesData.msg.push($message.val());
+            localStorage.setItem('message-chat-node', JSON.stringify(messagesData));
             socket.emit('send message', $message.val());
             $message.val('');
         });
