@@ -36,7 +36,8 @@
 </div>
 <script>
     $(function(){
-        var messagesData = JSON.parse(localStorage.getItem('message-chat-node')) || {msg: []};
+        var date = new Date();
+        var messagesData = JSON.parse(localStorage.getItem('message-chat-node' + date.getDate() + "" + date.getMonth())) || {msg: []};
         var $chat = $('#chat');
         for(var i = 0; i < messagesData.msg.length; i++) {
             $chat.append('<div class="well">'+ messagesData.msg[i] + '</div>')
@@ -50,7 +51,7 @@
             e.preventDefault();
             console.log('submit');
             messagesData.msg.push($message.val());
-            localStorage.setItem('message-chat-node', JSON.stringify(messagesData));
+            localStorage.setItem('message-chat-node' + date.getDate() + "" + date.getMonth(), JSON.stringify(messagesData));
             socket.emit('send message', $message.val());
             $message.val('');
         });
