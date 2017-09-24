@@ -57,7 +57,9 @@
         });
 
         socket.on('new message', function(data){
-           $chat.append('<div class="well">'+ data.msg + '</div>')
+            messagesData.msg.push(data.msg);
+            localStorage.setItem('message-chat-node' + date.getDate() + "" + date.getMonth(), JSON.stringify(messagesData));
+            $chat.append('<div class="well">'+ data.msg + '</div>')
         });
     });
 </script>
