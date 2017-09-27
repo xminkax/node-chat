@@ -10,7 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "socket.io": "*",
-    "express": "*"
+    "express": "*",
+    "mongoose": "^4.11.13"
   },
   "devDependencies": {
     "mongoose": "^4.11.13",
