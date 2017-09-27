@@ -10,9 +10,9 @@ Schema = new mongoose.Schema({
 });
 
 //const Message = mongoose.model('messages', Schema);
-const MONGOLAB_URI = "mongodb://heroku_z45zn901:alrmhkl5eg87ao5drig0doctb6@ds139989.mlab.com:39989/heroku_z45zn901";
+//const MONGOLAB_URI = "mongodb://heroku_z45zn901:alrmhkl5eg87ao5drig0doctb6@ds139989.mlab.com:39989/heroku_z45zn901";
 
-mongoose.connect(MONGOLAB_URI, function (error) {
+mongoose.connect(process.env.MONGOLAB_URI, function (error) {
     if (error) console.error(error);
     else console.log('mongo connected');
 });
