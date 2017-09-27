@@ -36,24 +36,24 @@
 </div>
 <script>
     $(function(){
-//        var $chat = $('#chat');
-//        var socket = io.connect();
-//        var $messageForm = $('#messageForm');
-//        var $message = $('#message');
-//
-//        $messageForm.submit(function(e){
-//            e.preventDefault();
-//            socket.emit('send message', $message.val());
-//            $message.val('');
-//        });
-//
-//        socket.emit('client start');
-//
-//        socket.on('add messages', function(data){
-//            for(var i = 0; i < data.length; i++) {
-//                $chat.append('<div class="well">'+ data[i].message + '</div>')
-//            }
-//        });
+        var $chat = $('#chat');
+        var socket = io.connect();
+        var $messageForm = $('#messageForm');
+        var $message = $('#message');
+
+        $messageForm.submit(function(e){
+            e.preventDefault();
+            socket.emit('send message', $message.val());
+            $message.val('');
+        });
+
+        socket.emit('client start');
+
+        socket.on('add messages', function(data){
+            for(var i = 0; i < data.length; i++) {
+                $chat.append('<div class="well">'+ data[i].message + '</div>')
+            }
+        });
     });
 </script>
 </body>
