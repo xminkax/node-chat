@@ -36,13 +36,9 @@
 </div>
 <script>
     $(function(){
-        var date = new Date();
-        var messagesData = JSON.parse(localStorage.getItem('message-chat-node' + date.getDate() + "" + date.getMonth())) || {msg: []};
-        var $chat = $('#chat');
-        for(var i = 0; i < messagesData.msg.length; i++) {
-            $chat.append('<div class="well">'+ messagesData.msg[i] + '</div>')
-        }
+        socket.emit('client start');
 
+        var $chat = $('#chat');
         var socket = io.connect();
         var $messageForm = $('#messageForm');
         var $message = $('#message');
@@ -53,10 +49,10 @@
             $message.val('');
         });
 
-        socket.on('new message', function(data){
-            messagesData.msg.push(data.msg);
-            localStorage.setItem('message-chat-node' + date.getDate() + "" + date.getMonth(), JSON.stringify(messagesData));
-            $chat.append('<div class="well">'+ data.msg + '</div>')
+        socket.on('add messages', function(data){
+            for(var i = 0; i < data.length; i++) {
+                $chat.append('<div class="well">'+ data[i].message + '</div>')
+            }
         });
     });
 </script>

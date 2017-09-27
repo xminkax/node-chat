@@ -11,6 +11,9 @@
   "dependencies": {
     "socket.io": "*",
     "express": "*"
+  },
+  "devDependencies": {
+    "mongoose": "^4.11.13",
+    "mongose": "0.0.2-security"
   }
-
 }
