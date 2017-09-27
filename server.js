@@ -25,26 +25,26 @@ app.get('/', function(req, res) {
 });
 
 io.sockets.on('connection', function(socket){
-    connections.push(socket);
-    console.log('connected %s sockets connected', connections.length)
-
-    socket.on('disconnect', function(socker){
-        connections.splice(connections.indexOf(socket), 1);
-        console.log('Disconnected %s sockets connected', connections.length)
-    });
-
-    socket.on('send message', function(data){
-        const newMessage = new Message({message: data});
-            newMessage.save(function (err) {
-        });
-        io.sockets.emit('add messages', [{message: data}]);
-    });
-
-    socket.on('client start', function() {
-        Message.find(function (err, messages) {
-            io.sockets.emit('add messages', messages);
-        });
-    });
+    //connections.push(socket);
+    //console.log('connected %s sockets connected', connections.length)
+    //
+    //socket.on('disconnect', function(socker){
+    //    connections.splice(connections.indexOf(socket), 1);
+    //    console.log('Disconnected %s sockets connected', connections.length)
+    //});
+    //
+    //socket.on('send message', function(data){
+    //    const newMessage = new Message({message: data});
+    //        newMessage.save(function (err) {
+    //    });
+    //    io.sockets.emit('add messages', [{message: data}]);
+    //});
+    //
+    //socket.on('client start', function() {
+    //    Message.find(function (err, messages) {
+    //        io.sockets.emit('add messages', messages);
+    //    });
+    //});
 
 });
 
